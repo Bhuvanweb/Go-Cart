@@ -22,9 +22,7 @@ router.get('/add-products',(req,res)=>{
 router.post('/add-products',(req,res)=>{
   console.log(req.body);
   console.log(req.files.Image);
-})
-
-productHelpers.addProduct(req.body,(id)=>{
+  productHelpers.addProduct(req.body,(id)=>{
   let image=req.files.Image
   image.mv('./public/product-images/'+id+'.jpg',(err,done)=>{
     if(!err){
@@ -35,6 +33,9 @@ productHelpers.addProduct(req.body,(id)=>{
   })
   
 })
+})
+
+
 
 
 module.exports = router;
