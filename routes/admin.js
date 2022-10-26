@@ -3,18 +3,13 @@ var router = express.Router();
 var productHelpers=require('../helpers/product-helpers')
 
 /* GET users listing. */
-let products=[
-  {no:"1",
-  name:"Apple",
-  category:"fruit",
-  description:"It's the best food",
-  image:"https://healthjade.com/wp-content/uploads/2017/10/apple-fruit.jpg",
-  price:"400"
-}
-]
+
 
 router.get('/', function(req, res, next) {
-  res.render('admin/view-products',{products,admin:true})
+  productHelpers.getAllProducts().then((products)=>{
+    console.log(products);
+      res.render('admin/view-products',{products,admin:true})
+    })
 });
 router.get('/add-products',(req,res)=>{
   res.render('admin/add-products')
