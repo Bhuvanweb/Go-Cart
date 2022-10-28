@@ -26,6 +26,8 @@ router.post('/add-products',(req,res)=>{
       console.log(err);
     }
   })
+
+  
   
 })
 })
