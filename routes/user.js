@@ -19,7 +19,7 @@ router.get('/signup',(req,res)=>{
 })
 
 router.post('/signup',(req,res)=>{
-
+  userHelpers.doSignup(req.body)
 })
 
 module.exports = router;
