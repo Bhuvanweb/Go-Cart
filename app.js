@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const {engine}=require('express-handlebars')
+const session=require('express-session')
 
 var userRouter = require('./routes/user');
 var adminRouter = require('./routes/admin');
@@ -23,6 +24,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(fileUpload())
+app.use(session({secret:'Key',cookie:{maxAge:600000}}))
 db.connect((err)=>{
   if(err){
     console.log(`Connection Error ${err}`);
