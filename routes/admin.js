@@ -26,11 +26,16 @@ router.post('/add-products',(req,res)=>{
       console.log(err);
     }
   })
-
-  
-  
 })
 })
+router.get('/delete-products/:id',(req,res)=>{
+  let proId=req.params.id
+  productHelpers.deleteProducts(proId).then((response)=>{
+    res.redirect('/admin/')
+  })
+})
+  
+  
 
 
 
