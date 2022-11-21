@@ -2,8 +2,8 @@ var express = require('express');
 var router = express.Router();
 var productHelpers=require('../helpers/product-helpers')
 var userHelpers=require('../helpers/user-helpers')
-const varifyLogin=(req,res,next)=>{
-  if(req.session.user.loggedIn){
+let varifyLogin=(req,res,next)=>{
+  if(req.session.loggedIn){
     next()
   }else{
     res.redirect('/login')
@@ -34,6 +34,9 @@ router.get('/signup',(req,res)=>{
 router.post('/signup',(req,res)=>{
   userHelpers.doSignup(req.body).then((response)=>{
     console.log(response);
+    req.session.user=response
+    req.session.user.loggedIn=true
+    res.redirect('/')
   })
 })
 router.post('/login',(req,res)=>{

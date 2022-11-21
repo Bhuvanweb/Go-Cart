@@ -44,13 +44,14 @@
             value="{{product.Price}}"
           />
           <label for="">Image</label>
-          <img src="/product-images/{{product._id}}.jpg" style="width:100px; height:auto ;" alt="" >
+          <img src="/product-images/{{product._id}}.jpg" id="imageView" class="pt-3" style="width:100px; height:auto ;" alt="" >
           <input
             type="file"
             name="Image"
             class="form-control"
             id="image"
             placeholder="Upload Image"
+            onchange="viewImage(event)"
           />
         <br>
           <button type="submit" class="btn btn-success ml-auto">Submit</button>
@@ -59,3 +60,8 @@
     </div>
   </div>
 </section>
+<script>
+  function viewImage(event){
+    document.getElementById('imageView').src=URL.createObjectURL(event.target.files[0])
+  }
+</script>
