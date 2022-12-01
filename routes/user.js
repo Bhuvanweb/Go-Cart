@@ -56,7 +56,9 @@ router.get('/logout',(req,res)=>{
   req.session.user=null
   res.redirect('/')
 })
-router.get('/cart',varifyLogin,(req,res)=>{
+router.get('/cart',varifyLogin,async(req,res)=>{
+  let products=await userHelpers.getCartProducts(req.session.user._id)
+  console.log(products);
   res.render('user/cart')
 })
 router.get('/add-to-cart/:id',varifyLogin,(req,res)=>{
