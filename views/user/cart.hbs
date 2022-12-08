@@ -1,27 +1,31 @@
-<div class="container">
+<section>
+  <div class="container">
     <div class="table mt-5">
-        <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Item</th>
-      <th scope="col">Title</th>
-      <th scope="col">Quantity</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-        <td><img style="height: 70px; width: 70px;" src="" alt=""></td>
-      <td>Apple</td>
-      <td>
-        <button class="cart-item-count mr-3">-</button>1<button class="cart-item-count">+</button>
-      </td>
-      <td>
-        <a href="" class="btn btn-danger">Remove</a>
-      </td>
-    </tr>
-
-
-  </tbody>
-</table>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Item</th>
+            <th scope="col">Title</th>
+            <th scope="col">Quantity</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each products}}
+          <tr>
+            <td><img style="height: 70px; width: 70px;" src="/product-images/{{this._id}}.jpg" alt="" /></td>
+            <td>{{this.Name}}</td>
+            <td>
+              <button class="cart-item-count mr-3">- </button>1<button
+                class="cart-item-count"
+              >+</button>
+            </td>
+            <td>
+              <a href="" class="btn btn-danger">Remove</a>
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
     </div>
-</div>
+  </div>
+</section>
